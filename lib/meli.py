@@ -1,9 +1,10 @@
  #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from ConfigParser import SafeConfigParser
+
+from six.moves.configparser import SafeConfigParser
 from ssl_helper import SSLAdapter
-from urllib import urlencode
+from urllib.parse import urlencode
 import json
 import os
 import re
@@ -79,7 +80,7 @@ class Meli(object):
                 # response code isn't a 200; raise an exception
                 response.raise_for_status()
         else:
-            raise Exception, "Offline-Access is not allowed."
+            raise Exception("Offline-Access is not allowed.")
 
     # REQUEST METHODS
     def get(self, path, params=None, extra_headers=None):
